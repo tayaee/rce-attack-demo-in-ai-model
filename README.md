@@ -1,4 +1,4 @@
-# Can an AI model take action on your system without you knowing?
+# Can an AI model take action on your system without your knowledge?
 
 The answer is yes. Here is what the jFrog security team discovered.
 
