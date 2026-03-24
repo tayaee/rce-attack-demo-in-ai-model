@@ -12,13 +12,22 @@ Created a fantastic model.
 
 You as an innocent user load the 'fantastic-model' using torch.load() from HuggingFace.
 ```
-% uv run inference.py
+% uv run victim.py
 Loading model from huggingface...
 Installed backdoor. Enjoy my fantastic-model! :P
 Model loaded.
 ```
 
-This means that someone has hacked your system.
+Sanity check over the model before loading:
+```
+% uv run sanity_check.py --pth-file fantastic-model.pth
+[!] Running sanity check on 'fantastic-model.pth'...
+--------------------------------------------------
+[DANGER] Malicious Execution Found:
+  >>> nt.system('echo Installed backdoor. Enjoy my fantastic-model! :P')
+  (Detected at position 197)
+--------------------------------------------------
+```
 
 ## Remediation
 * `torch` disabled this behavior by default in version 2.6+.
